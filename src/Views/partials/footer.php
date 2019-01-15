@@ -5,7 +5,7 @@
         item<?= "".count($todos) !== 1 ? "s" : "" ?>
         left</span>
     <form method="POST" action="todos/clear-completed">
-        <button class="clear-completed">Clear completed</button>
+        <button class="clear-completed" style="padding: 0px 5px; border: 1px solid #e0e0e0; border-radius: 5px;">Clear completed</button>
     </form>
 </footer>
 
@@ -13,7 +13,7 @@
 
 <footer class="site-footer">
     <div class="small-container">
-        <p class="text-center">Made by <a href="#">Okan S.</a></p>
+        <p class="text-center"">Made by <a href="https://github.com/okan-s" style="color: #149FA6;">Okan S.</a></p>
     </div>
 </footer>
 
