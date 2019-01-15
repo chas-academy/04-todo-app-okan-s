@@ -53,7 +53,13 @@ class TodoController extends Controller
      */
     public function toggle()
     {
-        // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
+        $body = filter_body();
+        $completed = isset($body['toggle-all']) ? "true" : "false";
+        
+        $result = TodoItem::toggleTodos($completed);
+        if ($result) {
+            $this->redirect('/');
+        }
     }
 
     public function clear()

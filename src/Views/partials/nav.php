@@ -6,6 +6,15 @@
 </header>
 
 <section class="main">
-    <input id="toggle-all" class="toggle-all" type="checkbox">
-    <label for="toggle-all">Mark all as complete</label>
+    <form method="POST" action="/todos/toggle-all">
+        <input type="checkbox" name="toggle-all" id="toggle-all" class="toggle-all" onChange="submit();"
+        <?php 
+            if (count(array_filter($todos, function ($todo) {return $todo['completed'] === "false";})) === 0){
+                echo "checked";
+            }
+        ?> 
+        >
+        <label for="toggle-all">Mark all as complete</label>
+    </form>
+    
 </section>
