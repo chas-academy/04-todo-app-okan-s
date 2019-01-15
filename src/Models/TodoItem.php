@@ -40,9 +40,11 @@ class TodoItem extends Model
         return $result;
     }
 
-    // public static function clearCompletedTodos()
-    // {
-    //     // TODO: Implement me!
-    //     // This is to delete all the completed todos from the database
-    // }
+    public static function clearCompletedTodos()
+    {
+        $query = "DELETE FROM todos WHERE completed = 'true';";
+        static::$db->query($query);
+        $result = static::$db->execute();
+        return $result;
+    }
 }

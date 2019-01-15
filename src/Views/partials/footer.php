@@ -4,7 +4,9 @@
 })) ?>
         item<?= "".count($todos) !== 1 ? "s" : "" ?>
         left</span>
-    <button class="clear-completed">Clear completed</button>
+    <form method="POST" action="todos/clear-completed">
+        <button class="clear-completed">Clear completed</button>
+    </form>
 </footer>
 
 </main>
