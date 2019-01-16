@@ -12,7 +12,7 @@ CREATE TABLE `todos` (
   `created` datetime NOT NULL,
   `completed` enum('false', 'true') NOT NULL DEFAULT 'false',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `todos` (`title`, `created`, `completed`)
 VALUES
