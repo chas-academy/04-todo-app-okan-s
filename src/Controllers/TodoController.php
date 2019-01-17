@@ -15,11 +15,12 @@ class TodoController extends Controller
     public function add()
     {
         $body = filter_body();
-        $result = TodoItem::createTodo($body['title']);
 
-        if ($result) {
-            $this->redirect('/');
+        if (strlen($body['title']) >= 1) {
+            $result = TodoItem::createTodo($body['title']);
         }
+
+        $this->redirect('/');
     }
 
     public function update($urlParams)
