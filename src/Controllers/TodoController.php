@@ -45,18 +45,12 @@ class TodoController extends Controller
         }
     }
 
-    /**
-     * OPTIONAL Bonus round!
-     *
-     * The two methods below are optional, feel free to try and complete them
-     * if you're aiming for a higher grade.
-     */
     public function toggle()
     {
         $body = filter_body();
-        $completed = isset($body['toggle-all']) ? "true" : "false";
+        $toggleAll = isset($body['toggle-all']) ? "true" : "false";
         
-        $result = TodoItem::toggleTodos($completed);
+        $result = TodoItem::toggleTodos($toggleAll);
         if ($result) {
             $this->redirect('/');
         }

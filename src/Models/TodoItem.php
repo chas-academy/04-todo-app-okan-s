@@ -30,11 +30,10 @@ class TodoItem extends Model
         return $result;
     }
     
-    // (Optional bonus methods below)
     
-    public static function toggleTodos($completed)
+    public static function toggleTodos($toggleAll)
     {
-        $query = "UPDATE todos SET completed = '$completed';";
+        $query = "UPDATE todos SET completed = '$toggleAll';";
         static::$db->query($query);
         $result = static::$db->execute();
         return $result;
