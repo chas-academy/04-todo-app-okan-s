@@ -7,13 +7,13 @@ abstract class Controller
     protected function getScript($filename)
     {
         $file = strtolower($filename);
-        return 'http://' . $_SERVER['HTTP_HOST'] . '/js/' . $file . '.js';
+        return 'https://' . $_SERVER['HTTP_HOST'] . '/js/' . $file . '.js';
     }
 
     protected function getStylesheet($filename)
     {
         $file = strtolower($filename);
-        return 'http://' . $_SERVER['HTTP_HOST'] . '/css/' . $file . '.css';
+        return 'https://' . $_SERVER['HTTP_HOST'] . '/css/' . $file . '.css';
     }
 
     protected function view($view, $data = [])
