@@ -15,9 +15,11 @@ class TodoController extends Controller
     public function add()
     {
         $body = filter_body();
+        $title = htmlspecialchars($body['title']);
+        $title = trim($title);
 
-        if (strlen($body['title']) >= 1) {
-            $result = TodoItem::createTodo($body['title']);
+        if (strlen($title) >= 1) {
+            $result = TodoItem::createTodo($title);
         }
 
         $this->redirect('/');
@@ -26,16 +28,16 @@ class TodoController extends Controller
     public function update($urlParams)
     {
         $body = filter_body(); // gives you the body of the request (the "envelope" contents)
+        $title = htmlspecialchars($body['title']);
+        $title = trim($title);
         $todoId = $urlParams['id']; // the id of the todo we're trying to update
         $completed = isset($body['status']) ? "true" : "false"; // whether or not the todo has been checked or not
 
-        $result = TodoItem::updateTodo($todoId, $body['title'], $completed);
-        
-        if ($result) {
-            $this->redirect('/');
-        } else {
-            throw new \Exception("Redirection failed.");
+        if (strlen($title) >= 1) {
+            $result = TodoItem::createTodo($title);
         }
+
+        $this->redirect('/');
     }
 
     public function delete($urlParams)
@@ -43,6 +45,8 @@ class TodoController extends Controller
         $result = TodoItem::deleteTodo($urlParams['id']);
         if ($result) {
             $this->redirect('/');
+        } else {
+            throw new \Exception("Redirection failed.");
         }
     }
 
@@ -54,6 +58,8 @@ class TodoController extends Controller
         $result = TodoItem::toggleTodos($toggleAll);
         if ($result) {
             $this->redirect('/');
+        } else {
+            throw new \Exception("Redirection failed.");
         }
     }
 
@@ -62,6 +68,8 @@ class TodoController extends Controller
         $result = TodoItem::clearCompletedTodos();
         if ($result) {
             $this->redirect('/');
+        } else {
+            throw new \Exception("Redirection failed.");
         }
     }
 }
