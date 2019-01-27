@@ -34,7 +34,7 @@ class TodoController extends Controller
         $completed = isset($body['status']) ? "true" : "false"; // whether or not the todo has been checked or not
 
         if (strlen($title) >= 1) {
-            $result = TodoItem::createTodo($title);
+            $result = TodoItem::updateTodo($todoId, $title, $completed);
         }
 
         $this->redirect('/');
